@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  Copyright (C) 2018-2020 LEIDOS.
+  Copyright 2021 U.S. Department of Transportation, Federal Highway Administration
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not
   use this file except in compliance with the License. You may obtain a copy of
@@ -18,12 +18,13 @@
 	Launch file for launching the nodes in the CARMA hardware interface stack 
 -->
 <launch>
+  <!-- Currently C1T does not support mock drivers, and all real drivers are launched from Docker containers. -->
 
   <arg name="vehicle_calibration_dir" default="$(find carma)../../CARMAVehicleCalibration/development/vehicle" doc="The directory continaing vehicle calibration type parameters"/>
 
   <!-- Simulated Driver Arguments -->
   <!-- Simulation Usage -->
-  <arg name="mock_drivers" default="controller can comms gnss radar lidar camera roadway_sensor" doc="List of driver node base names which will be launched as mock drivers"/>
+  <arg name="mock_drivers" default="" doc="List of driver node base names which will be launched as mock drivers"/>
   
   <!-- Startup Drivers With Main CARMA System -->
   <arg name="launch_drivers" default="true" doc="True if drivers are to be launched with the CARMA Platform, overrides mock_drivers arg if false"/>
@@ -32,25 +33,4 @@
   <remap from="ui_instructions" to="$(optenv CARMA_UI_NS)/ui_instructions"/>
 
   <remap from="system_alert" to="/system_alert"/>
-
-  <group if="$(arg launch_drivers)">
-    <!-- Simulated Mock Drivers -->
-    <include file="$(find carma)/launch/mock_drivers.launch">
-      <arg name="mock_drivers" value="$(arg mock_drivers)"/>
-    </include>
-
-    <!-- Driver Launch File if Using Actual Drivers -->
-    <include file="$(find carma)/launch/drivers.launch">
-      <arg name="mock_drivers" value="$(arg mock_drivers)" />
-      <arg name="vehicle_calibration_dir" value="$(arg vehicle_calibration_dir)"/>
-    </include>
-  </group>
-
-  <!-- LightBar Manager -->
-  <include file="$(find lightbar_manager)/launch/lightbar_manager.launch">
-    <arg name="lightbar_driver_service_name" value="$(optenv CARMA_INTR_NS)/lightbar/set_lights"/>
-    <arg name="guidance_state_topic_name" value= "$(optenv CARMA_GUIDE_NS)/state"/>
-    <arg name="turn_signal_topic_name" value= "$(optenv CARMA_INTR_NS)/turn_signal_command"/>
-  </include>
-
 </launch>
