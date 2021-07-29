@@ -1,4 +1,4 @@
-#  Copyright (C) 2018-2020 LEIDOS.
+#  Copyright (C) 2021 U.S. Department of Transportation, Federal Highway Administration
 # 
 #  Licensed under the Apache License, Version 2.0 (the "License"); you may not
 #  use this file except in compliance with the License. You may obtain a copy of
@@ -28,12 +28,11 @@
 # EXTRA_PACKAGES - The repo to checkout any additional packages from at build time. 
 #                  Default = none
 
-
 # /////////////////////////////////////////////////////////////////////////////
 # Stage 1 - Acquire the CARMA source as well as any extra packages
 # /////////////////////////////////////////////////////////////////////////////
 
-FROM usdotfhwastoldev/autoware.ai:noetic-develop AS base-image
+FROM usdotfhwastoldev/carma-base:noetic-f1tenth-develop AS base-image
 
 FROM base-image AS source-code
 
@@ -77,6 +76,6 @@ LABEL org.label-schema.build-date=${BUILD_DATE}
 
 # Migrate the files from the install stage
 COPY --from=install --chown=carma /opt/carma /opt/carma
-COPY --from=install --chown=carma /root/.bashrc /home/carma/.bashrc
+# COPY --from=install --chown=carma /root/.bashrc /home/carma/.bashrc
 
 CMD "roslaunch carma carma_docker.launch"
