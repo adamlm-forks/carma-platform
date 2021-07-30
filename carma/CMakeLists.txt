@@ -29,7 +29,7 @@ find_package(catkin REQUIRED
         cav_msgs
         j2735_msgs
         autoware_msgs
-        derived_object_msgs
+        # derived_object_msgs
 )
 
 catkin_package()

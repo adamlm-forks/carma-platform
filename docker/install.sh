@@ -26,7 +26,7 @@ cd ~/carma_ws
 echo "Building CARMA 1Tenth (C1T)"
 
 catkin_make_isolated --install --install-space /opt/carma/install --only-pkg-with-deps \
-    carma_1tenth \
+    carma \
     arbitrator \
     guidance \
     health_monitor \
