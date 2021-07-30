@@ -1,15 +1,15 @@
 repositories:
   autoware.ai:
     type: git
-    url: git@github.com:usdot-fhwa-stol/autoware.ai.git
+    url: https://github.com/usdot-fhwa-stol/autoware.ai.git
     version: noetic/develop
   carma/src/carma-msgs:
     type: git
-    url: git@github.com:usdot-fhwa-stol/carma-msgs.git
+    url: https://github.com/usdot-fhwa-stol/carma-msgs.git
     version: noetic/develop
   carma/src/carma-utils:
     type: git
-    url: git@github.com:usdot-fhwa-stol/carma-utils.git
+    url: https://github.com/usdot-fhwa-stol/carma-utils.git
     version: noetic/develop
   rosbridge_suite:
       type: git
