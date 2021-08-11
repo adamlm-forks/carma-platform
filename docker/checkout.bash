@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#  Copyright (C) 2018-2020 LEIDOS.
+# Copyright 2021 U.S. Department of Transportation, Federal Highway Administration
 # 
 #  Licensed under the Apache License, Version 2.0 (the "License"); you may not
 #  use this file except in compliance with the License. You may obtain a copy of
@@ -15,42 +15,5 @@
 #  the License.
 
 # CARMA packages checkout script
-# Optional argument to set the root checkout directory with no ending '/' default is '~'
 
-set -exo pipefail
-
-dir=~
-while [[ $# -gt 0 ]]; do
-      arg="$1"
-      case $arg in
-            -d|--develop)
-                  BRANCH=noetic/develop
-                  shift
-            ;;
-            -r|--root)
-                  dir=$2
-                  shift
-                  shift
-            ;;
-      esac
-done
-
-cd ${dir}/src
-
-
-# clone carma repos
-
-if [[ "$BRANCH" = "noetic/develop" ]]; then
-      git clone --depth=1 https://github.com/usdot-fhwa-stol/carma-msgs.git --branch $BRANCH
-      git clone --depth=1 https://github.com/usdot-fhwa-stol/novatel_gps_driver.git --branch $BRANCH
-      git clone --depth=1 https://github.com/usdot-fhwa-stol/carma-utils.git --branch $BRANCH
-      git clone --depth=1 https://github.com/usdot-fhwa-stol/carma-messenger.git --branch $BRANCH
-else
-      git clone --depth=1 https://github.com/usdot-fhwa-stol/carma-msgs.git --branch noetic/develop
-      git clone --depth=1 https://github.com/usdot-fhwa-stol/novatel_gps_driver.git --branch noetic/develop
-      git clone --depth=1 https://github.com/usdot-fhwa-stol/carma-utils.git --branch noetic/develop
-      git clone --depth=1 https://github.com/usdot-fhwa-stol/carma-messenger.git --branch noetic/develop
-fi
-
-# add astuff messages
-git clone https://github.com/astuff/astuff_sensor_msgs -b melodic
+vcs import --input ~/src/carma-platform/carma-platform.repos ~/src/
