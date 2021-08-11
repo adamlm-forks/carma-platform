@@ -18,6 +18,11 @@
 
 set -ex
 
+sudo apt update && sudo apt install -y --no-install-recommends \
+  libcairo2-dev \
+  libgsl-dev \
+  && sudo rm -rf /var/lib/apt/lists/*
+
 # Source the ROS installation
 source /opt/ros/noetic/setup.bash
 
@@ -31,6 +36,7 @@ catkin_make_isolated --install --install-space /opt/carma/install --only-pkg-wit
     carma_wm_ctrl \
     guidance \
     health_monitor \
+    laser_scan_matcher \
     map_file \
     plan_delegator \
     pose_to_tf \

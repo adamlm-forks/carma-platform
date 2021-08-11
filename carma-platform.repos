@@ -11,3 +11,12 @@ repositories:
     type: git
     url: https://github.com/usdot-fhwa-stol/carma-utils.git
     version: noetic/develop
+  scan_tools:
+    type: git
+    url: https://github.com/ccny-ros-pkg/scan_tools.git
+    version: indigo
+  csm:
+    type: git
+    url: https://github.com/AndreaCensi/csm.git
+    version: master
+

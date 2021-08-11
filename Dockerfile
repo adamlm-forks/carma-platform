@@ -57,6 +57,10 @@ RUN ~/carma_ws/src/carma-platform/docker/install.sh
 # Stage 3 - Finalize deployment
 # /////////////////////////////////////////////////////////////////////////////
 
+RUN sudo apt update && sudo apt install -y --no-install-recommends \
+      libcairo2-dev \
+      libgsl-dev  && \
+      sudo rm -rf /var/lib/apt/lists/*
 
 FROM base-image
 
