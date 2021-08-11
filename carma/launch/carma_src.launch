@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
+
 <!--
-  Copyright (C) 2018-2020 LEIDOS.
+  Copyright (C) 2021 LEIDOS.
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not
   use this file except in compliance with the License. You may obtain a copy of
@@ -31,11 +32,11 @@
 <launch>
 
   <!-- Directory of vehicle config parameters -->
-  <arg name="vehicle_config_dir" default="/opt/carma/vehicle/config" doc="The directory continaing vehicle config type parameters"/>
-  <arg name="vehicle_calibration_dir" default="/opt/carma/vehicle/calibration" doc="The directory continaing vehicle calibration type parameters"/>
+  <arg name="vehicle_config_dir" default="/opt/carma/vehicle/config" doc="The directory containing vehicle config type parameters"/>
+  <arg name="vehicle_calibration_dir" default="/opt/carma/vehicle/calibration" doc="The directory containing vehicle calibration type parameters"/>
   <arg name="yolo_dir" default="/opt/carma/yolo" doc="The directory continaing yolo weights files for the perception stack"/>
   <arg name="cuda" default="true" doc="cuda flag for vision_darknet_detect (true if cuda is available)"/>
-  
+
 	<!-- Startup Drivers With Main CARMA System -->
   <arg name="launch_drivers" default="true" doc="True if drivers are to be launched with the CARMA Platform, overrides mock_drivers arg if false"/>
 
@@ -94,10 +95,10 @@
     </include>
   </group>
 
-  <!-- Comms Messaging Stack -->
+  <!-- Comms Messaging Stack
   <group ns="$(env CARMA_MSG_NS)">
     <include file="$(find carma)/launch/message.launch"/>
-  </group>
+  </group> -->
 
   <!-- Environment Perception Stack -->
   <group ns="$(env CARMA_ENV_NS)">
@@ -137,12 +138,12 @@
     <include file="$(find carma)/launch/ui.launch"/>
   </group>
 
-  <!-- Set up the rosbag record node that will exclude sensitive topics -->
+  <!-- Set up the rosbag record node that will exclude sensitive topics
   <group ns="carma_record">
     <include file="$(find carma_record)/launch/carma_record.launch" if="$(arg use_rosbag)" />
-  </group>
+  </group> -->
 
-  <!-- Dump all ros parameters to a file -->
-  <node name="param_dump" pkg="carma_record" type="param_dump.sh"/>
+  <!-- Dump all ros parameters to a file
+  <node name="param_dump" pkg="carma_record" type="param_dump.sh"/> -->
   
 </launch>
