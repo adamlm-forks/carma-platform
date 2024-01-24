@@ -1,0 +1,35 @@
+site_name: CARMA Cooperative Perception
+repo_name: usdot-fhwa-stol/carma-platform
+repo_url: https://github.com/usdot-fhwa-stol/carma-platform
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+plugins:
+  - search
+
+theme:
+  features:
+    - navigation.indexes
+    - navigation.top
+  icon:
+    repo: fontawesome/brands/github
+  name: material
+  palette:
+    - scheme: default
+      primary: amber
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+nav:
+  - "index.md"
